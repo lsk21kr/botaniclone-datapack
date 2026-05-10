@@ -1,0 +1,37 @@
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:player",
+              "equipment": {
+                "mainhand": {
+                  "items": [
+                    "minecraft:bone_meal"
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:interaction"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "botaniclone:_use_bonemeal"
+  }
+}

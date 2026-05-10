@@ -1,0 +1,17 @@
+{
+  "values": [
+    {"id": "#guris:non-optionals", "required": false},
+    {"id": "#minecraft:flower_pots", "required": false},
+    {"id": "#minecraft:leaves", "required": false},
+    {"id": "minecraft:mangrove_propagule", "required": false},
+    {"id": "#guris:ancient_plants", "required": false},
+    {"id": "minecraft:pitcher_crop", "required": false},
+    {"id": "minecraft:chorus_flower", "required": false},
+    {"id": "#minecraft:wart_blocks", "required": false},
+    {"id": "#guris:mushroom_blocks", "required": false},
+    {"id": "minecraft:nether_wart", "required": false},
+    {"id": "minecraft:shroomlight", "required": false},
+    {"id": "minecraft:golden_dandelion", "required": false},
+    {"id": "minecraft:potted_golden_dandelion", "required": false}
+  ]
+}

@@ -1,0 +1,128 @@
+# BotaniClone block-definitions table.
+# One row per trigger block. The block_table plugin reads this and generates
+# the dispatcher (botaniclone:plant_check) plus per-behavior handler macros.
+#
+# Schema:
+#   id              - minecraft:<id> trigger block (required)
+#   behavior        - one of: spawn_loot, spawn_loot_alt, spawn_loot_mode_tall,
+#                     spawn_loot_mode_eye, spawn_loot_potted_only, spawn_pitcher,
+#                     chorus_deage (required)
+#   loot            - primary loot table id
+#   loot_alt        - alt loot for spawn_loot_alt (used when option_modeloot=0)
+#   loot_tall/short - tall-mode pair (spawn_loot_mode_tall)
+#   loot_day/night  - eyeblossom time-based pair (spawn_loot_mode_eye)
+#   potted_id       - potted variant block id; empty = no potted check
+#   blockstate      - state suffix string e.g. "[age=4]"; concatenated to id
+#   option_score    - scoreboard objective name to gate on (== 1)
+#   above           - second-pass offset string e.g. "~ ~1 ~" or "~ ~-1 ~";
+#                     omitted = block only checked at ground level
+#   potted_only     - true => no ground-block-equality unless-guard in pass 2
+#   min_pack_format - row dropped when target_pack_format < this value
+#
+# Step 5 will append new-block rows (1.21.4+, 26.1).
+
+# === Small flowers ===
+- {id: dandelion,           behavior: spawn_loot, loot: minecraft:blocks/dandelion,           potted_id: potted_dandelion,           above: "~ ~1 ~"}
+- {id: poppy,               behavior: spawn_loot, loot: minecraft:blocks/poppy,               potted_id: potted_poppy,               above: "~ ~1 ~"}
+- {id: blue_orchid,         behavior: spawn_loot, loot: minecraft:blocks/blue_orchid,         potted_id: potted_blue_orchid,         above: "~ ~1 ~"}
+- {id: allium,              behavior: spawn_loot, loot: minecraft:blocks/allium,              potted_id: potted_allium,              above: "~ ~1 ~"}
+- {id: azure_bluet,         behavior: spawn_loot, loot: minecraft:blocks/azure_bluet,         potted_id: potted_azure_bluet,         above: "~ ~1 ~"}
+- {id: red_tulip,           behavior: spawn_loot, loot: minecraft:blocks/red_tulip,           potted_id: potted_red_tulip,           above: "~ ~1 ~"}
+- {id: orange_tulip,        behavior: spawn_loot, loot: minecraft:blocks/orange_tulip,        potted_id: potted_orange_tulip,        above: "~ ~1 ~"}
+- {id: white_tulip,         behavior: spawn_loot, loot: minecraft:blocks/white_tulip,         potted_id: potted_white_tulip,         above: "~ ~1 ~"}
+- {id: pink_tulip,          behavior: spawn_loot, loot: minecraft:blocks/pink_tulip,          potted_id: potted_pink_tulip,          above: "~ ~1 ~"}
+- {id: oxeye_daisy,         behavior: spawn_loot, loot: minecraft:blocks/oxeye_daisy,         potted_id: potted_oxeye_daisy,         above: "~ ~1 ~"}
+- {id: cornflower,          behavior: spawn_loot, loot: minecraft:blocks/cornflower,          potted_id: potted_cornflower,          above: "~ ~1 ~"}
+- {id: lily_of_the_valley,  behavior: spawn_loot, loot: minecraft:blocks/lily_of_the_valley,  potted_id: potted_lily_of_the_valley,  above: "~ ~1 ~"}
+- {id: wither_rose,         behavior: spawn_loot, loot: minecraft:blocks/wither_rose,         potted_id: potted_wither_rose,         above: "~ ~1 ~", option_score: option_witherrose}
+
+# === Tree leaves => sapling (loot-mode switch via option_modeloot) ===
+- {id: oak_leaves,             behavior: spawn_loot_alt, option_score: option_tree, loot: minecraft:blocks/oak_leaves,             loot_alt: minecraft:blocks/oak_sapling,        potted_id: potted_oak_sapling,             above: "~ ~1 ~"}
+- {id: spruce_leaves,          behavior: spawn_loot_alt, option_score: option_tree, loot: minecraft:blocks/spruce_leaves,          loot_alt: minecraft:blocks/spruce_sapling,     potted_id: potted_spruce_sapling,          above: "~ ~1 ~"}
+- {id: birch_leaves,           behavior: spawn_loot_alt, option_score: option_tree, loot: minecraft:blocks/birch_leaves,           loot_alt: minecraft:blocks/birch_sapling,      potted_id: potted_birch_sapling,           above: "~ ~1 ~"}
+- {id: jungle_leaves,          behavior: spawn_loot_alt, option_score: option_tree, loot: minecraft:blocks/jungle_leaves,          loot_alt: minecraft:blocks/jungle_sapling,     potted_id: potted_jungle_sapling,          above: "~ ~1 ~"}
+- {id: acacia_leaves,          behavior: spawn_loot_alt, option_score: option_tree, loot: minecraft:blocks/acacia_leaves,          loot_alt: minecraft:blocks/acacia_sapling,     potted_id: potted_acacia_sapling,          above: "~ ~1 ~"}
+- {id: dark_oak_leaves,        behavior: spawn_loot_alt, option_score: option_tree, loot: minecraft:blocks/dark_oak_leaves,        loot_alt: minecraft:blocks/dark_oak_sapling,   potted_id: potted_dark_oak_sapling,        above: "~ ~1 ~"}
+- {id: cherry_leaves,          behavior: spawn_loot_alt, option_score: option_tree, loot: minecraft:blocks/cherry_leaves,          loot_alt: minecraft:blocks/cherry_sapling,     potted_id: potted_cherry_sapling,          above: "~ ~1 ~"}
+- {id: azalea_leaves,          behavior: spawn_loot_alt, option_score: option_tree, loot: minecraft:blocks/azalea_leaves,          loot_alt: minecraft:blocks/azalea,             potted_id: potted_azalea_bush,             above: "~ ~1 ~"}
+- {id: flowering_azalea_leaves,behavior: spawn_loot_alt, option_score: option_tree, loot: minecraft:blocks/flowering_azalea_leaves,loot_alt: minecraft:blocks/flowering_azalea,   potted_id: potted_flowering_azalea_bush,   above: "~ ~1 ~"}
+- {id: mangrove_propagule,     behavior: spawn_loot_alt, option_score: option_tree, loot: minecraft:blocks/mangrove_leaves,        loot_alt: guris:mangrove_propagule,            potted_id: potted_mangrove_propagule,      blockstate: "[age=4,hanging=true]"}
+
+# === Ancient (Trails & Tales) ===
+- {id: torchflower,    behavior: spawn_loot,    option_score: option_ancient, loot: minecraft:blocks/torchflower, potted_id: potted_torchflower, above: "~ ~1 ~"}
+- {id: pitcher_plant,  behavior: spawn_pitcher, option_score: option_ancient, above: "~ ~1 ~"}
+- {id: pitcher_crop,   behavior: spawn_pitcher, option_score: option_ancient, blockstate: "[age=4]", above: "~ ~1 ~"}
+
+# === Bamboo (potted only) ===
+- {id: bamboo, behavior: spawn_loot_potted_only, loot: minecraft:blocks/bamboo, potted_id: potted_bamboo, potted_only: true}
+
+# === Cactus ===
+- {id: cactus, behavior: spawn_loot, loot: minecraft:blocks/cactus, potted_id: potted_cactus, above: "~ ~1 ~"}
+
+# === Chorus flower (de-aging only) ===
+- {id: chorus_flower, behavior: chorus_deage, option_score: option_chorus, blockstate_unless: "[age=0]", above: "~ ~1 ~"}
+
+# === Dead bush ===
+- {id: dead_bush, behavior: spawn_loot, loot: guris:dead_bush, potted_id: potted_dead_bush, above: "~ ~1 ~"}
+
+# === Fungi (option_fungus, no modeloot switch in v1.0) ===
+- {id: nether_wart_block, behavior: spawn_loot, option_score: option_fungus, loot: minecraft:blocks/crimson_fungus, potted_id: potted_crimson_fungus, above: "~ ~1 ~"}
+- {id: warped_wart_block, behavior: spawn_loot, option_score: option_fungus, loot: minecraft:blocks/warped_fungus,  potted_id: potted_warped_fungus,  above: "~ ~1 ~"}
+- {id: shroomlight,       behavior: spawn_loot_nopot, option_score: option_fungus, loot: minecraft:blocks/shroomlight, above: "~ ~1 ~"}
+
+# === Hanging roots (above-offset uses ~ ~-1 ~ instead of ~ ~1 ~) ===
+- {id: hanging_roots, behavior: spawn_loot_nopot, loot: guris:hanging_roots, above: "~ ~-1 ~"}
+
+# === Lily pad ===
+- {id: lily_pad, behavior: spawn_loot_nopot, loot: minecraft:blocks/lily_pad, above: "~ ~1 ~"}
+
+# === Moss carpet ===
+- {id: moss_carpet, behavior: spawn_loot_nopot, loot: minecraft:blocks/moss_carpet, above: "~ ~1 ~"}
+
+# === Mushrooms (option_mushroom, modeloot switch) ===
+- {id: red_mushroom_block,   behavior: spawn_loot_alt, option_score: option_mushroom, loot: minecraft:blocks/red_mushroom_block,   loot_alt: guris:red_mushroom,   potted_id: potted_red_mushroom,   above: "~ ~1 ~"}
+- {id: brown_mushroom_block, behavior: spawn_loot_alt, option_score: option_mushroom, loot: minecraft:blocks/brown_mushroom_block, loot_alt: guris:brown_mushroom, potted_id: potted_brown_mushroom, above: "~ ~1 ~"}
+
+# === Nether roots ===
+- {id: crimson_roots,   behavior: spawn_loot, loot: minecraft:blocks/crimson_roots, potted_id: potted_crimson_roots, above: "~ ~1 ~"}
+- {id: warped_roots,    behavior: spawn_loot, loot: minecraft:blocks/warped_roots,  potted_id: potted_warped_roots,  above: "~ ~1 ~"}
+- {id: nether_sprouts,  behavior: spawn_loot_nopot, loot: guris:nether_sprouts,     above: "~ ~1 ~"}
+
+# === Nether wart (option_netherwart, modeloot switch) ===
+- {id: nether_wart, behavior: spawn_loot_alt, option_score: option_netherwart, blockstate: "[age=3]", loot: minecraft:blocks/nether_wart, loot_alt: guris:nether_wart, above: "~ ~1 ~"}
+
+# === Spore blossom ===
+- {id: spore_blossom, behavior: spawn_loot_nopot, loot: minecraft:blocks/spore_blossom, above: "~ ~1 ~"}
+
+# === Sugar cane ===
+- {id: sugar_cane, behavior: spawn_loot_nopot, loot: minecraft:blocks/sugar_cane, above: "~ ~1 ~"}
+
+# === Tall grasses (modetall switch) + non-mode tall_seagrass ===
+- {id: tall_grass,      behavior: spawn_loot_mode_tall, loot_tall: guris:tall_grass,  loot_short: guris:grass, above: "~ ~1 ~"}
+- {id: large_fern,      behavior: spawn_loot_mode_tall, loot_tall: guris:large_fern,  loot_short: guris:fern,  above: "~ ~1 ~"}
+- {id: tall_seagrass,   behavior: spawn_loot_nopot,     loot: guris:seagrass,                                  above: "~ ~1 ~"}
+- {id: fern_potted_row, behavior: spawn_loot_potted_only, loot: guris:fern, potted_id: potted_fern, potted_only: true}
+
+# === Vine ===
+- {id: vine, behavior: spawn_loot_nopot, loot: guris:vine, above: "~ ~1 ~"}
+
+# ============================================================================
+# Step 5: New blocks added since v1.0 (Modern build only).
+# Inclusion criterion: NOT directly bone-mealable in vanilla Java Edition.
+# ============================================================================
+
+# --- 1.21.4 (Pale Garden) — pack_format 57+ ---
+- {id: pale_oak_leaves,    behavior: spawn_loot_alt,        option_score: option_tree, loot: minecraft:blocks/pale_oak_leaves, loot_alt: minecraft:blocks/pale_oak_sapling, potted_id: potted_pale_oak_sapling, above: "~ ~1 ~", min_pack_format: 57}
+- {id: pale_moss_carpet,   behavior: spawn_loot_nopot,      loot: minecraft:blocks/pale_moss_carpet,                                                                                                                       above: "~ ~1 ~", min_pack_format: 57}
+- {id: pale_hanging_moss,  behavior: spawn_loot_nopot,      loot: minecraft:blocks/pale_hanging_moss,                                                                                                                      above: "~ ~-1 ~", min_pack_format: 57}
+- {id: closed_eyeblossom,  behavior: spawn_loot_mode_eye,   loot: minecraft:blocks/closed_eyeblossom, loot_day: minecraft:blocks/closed_eyeblossom, loot_night: minecraft:blocks/open_eyeblossom, potted_id: potted_closed_eyeblossom, above: "~ ~1 ~", min_pack_format: 57}
+- {id: open_eyeblossom,    behavior: spawn_loot_mode_eye,   loot: minecraft:blocks/open_eyeblossom,   loot_day: minecraft:blocks/closed_eyeblossom, loot_night: minecraft:blocks/open_eyeblossom, potted_id: potted_open_eyeblossom,   above: "~ ~1 ~", min_pack_format: 57}
+
+# --- 1.21.5 (Spring to Life) — pack_format 71+ ---
+- {id: leaf_litter,        behavior: spawn_loot_nopot, loot: minecraft:blocks/leaf_litter,        above: "~ ~1 ~", min_pack_format: 71}
+- {id: cactus_flower,      behavior: spawn_loot_nopot, loot: minecraft:blocks/cactus_flower,      above: "~ ~1 ~", min_pack_format: 71}
+- {id: short_dry_grass,    behavior: spawn_loot_nopot, loot: minecraft:blocks/short_dry_grass,    above: "~ ~1 ~", min_pack_format: 71}
+- {id: tall_dry_grass,     behavior: spawn_loot_nopot, loot: minecraft:blocks/tall_dry_grass,     above: "~ ~1 ~", min_pack_format: 71}
+
+# --- 26.1 (Tiny Takeover) — pack_format 100+ ---
+- {id: golden_dandelion,   behavior: spawn_loot, option_score: option_golden_dandelion, loot: minecraft:blocks/golden_dandelion, potted_id: potted_golden_dandelion, above: "~ ~1 ~", min_pack_format: 100}

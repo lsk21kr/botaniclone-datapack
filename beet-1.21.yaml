@@ -1,0 +1,32 @@
+# Modern profile: Minecraft 1.21.0 – 26.2 snapshot (pack_format 48 – 105).
+# Run: uv run beet -p beet-1.21.yaml build
+
+name: botaniclone
+description: "Use bone meal on small flowers, sugarcane, and other various non-bone-meal-able plants."
+
+output: dist
+
+data_pack:
+  load: "src"
+  name: botaniclone-1.21
+  zipped: true
+
+meta:
+  blocks_table: "src/tables/blocks.yaml"
+  templates_dir: "src/templates"
+  profile: modern
+  artifact_name: "botaniclone-1.21"
+  pack_format: 80
+  min_format: 48
+  max_format: 105
+  singular_folders: true
+  use_min_max_fields: true
+
+pipeline:
+  - plugins.legacy_filter
+  - plugins.block_table
+  - plugins.options_table
+  - plugins.folder_convention
+  - plugins.pack_meta
+  - plugins.validate
+  - plugins.zip_artifact

@@ -1,0 +1,24 @@
+# Shared base config. Profiles (beet-1.20.yaml, beet-1.21.yaml) extend this.
+# Run via:
+#   uv run beet -c beet-1.20.yaml build
+#   uv run beet -c beet-1.21.yaml build
+
+name: botaniclone
+description: "Use bone meal on small flowers, sugarcane, and other various non-bone-meal-able plants."
+
+output: dist
+
+data_pack:
+  load:
+    - "src/data"
+
+meta:
+  blocks_table: "src/tables/blocks.yaml"
+  templates_dir: "src/templates"
+
+pipeline:
+  - plugins.legacy_filter
+  - plugins.block_table
+  - plugins.folder_convention
+  - plugins.pack_meta
+  - plugins.zip_artifact

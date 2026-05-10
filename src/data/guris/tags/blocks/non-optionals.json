@@ -1,0 +1,25 @@
+{
+  "values": [
+    {"id": "#minecraft:small_flowers", "required": false},
+    {"id": "minecraft:cactus", "required": false},
+    {"id": "minecraft:dead_bush", "required": false},
+    {"id": "minecraft:lily_pad", "required": false},
+    {"id": "minecraft:hanging_roots", "required": false},
+    {"id": "minecraft:moss_carpet", "required": false},
+    {"id": "#guris:nether_roots", "required": false},
+    {"id": "minecraft:spore_blossom", "required": false},
+    {"id": "minecraft:sugar_cane", "required": false},
+    {"id": "#guris:tall_grasses", "required": false},
+    {"id": "minecraft:vine", "required": false},
+
+    {"id": "minecraft:pale_moss_carpet", "required": false},
+    {"id": "minecraft:pale_hanging_moss", "required": false},
+    {"id": "minecraft:closed_eyeblossom", "required": false},
+    {"id": "minecraft:open_eyeblossom", "required": false},
+
+    {"id": "minecraft:leaf_litter", "required": false},
+    {"id": "minecraft:cactus_flower", "required": false},
+    {"id": "minecraft:short_dry_grass", "required": false},
+    {"id": "minecraft:tall_dry_grass", "required": false}
+  ]
+}

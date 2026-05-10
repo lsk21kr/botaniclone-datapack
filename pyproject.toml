@@ -1,0 +1,17 @@
+[project]
+name = "botaniclone"
+version = "2.0.0.dev0"  # PEP 440 dev-release form. The datapack itself is versioned 2.0.0-wip (SemVer) in README.md / Versions.md.
+description = "BotaniClone datapack build pipeline (Beet-driven, multi-MC-version output)."
+requires-python = ">=3.10"
+dependencies = [
+    "beet>=0.108",
+    "jinja2>=3.1",
+    "pyyaml>=6.0",
+]
+
+[tool.uv]
+managed = true
+package = false
+
+[tool.beet]
+plugin_path = ["."]

@@ -1,0 +1,6 @@
+{
+  "values": [
+    {"id": "minecraft:torchflower", "required": false},
+    {"id": "minecraft:pitcher_plant", "required": false}
+  ]
+}

@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.venv/
+dist/
+.beet_cache/
+uv.lock

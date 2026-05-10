@@ -1,0 +1,6 @@
+{
+  "values": [
+    {"id": "minecraft:red_mushroom_block", "required": false},
+    {"id": "minecraft:brown_mushroom_block", "required": false}
+  ]
+}

@@ -1,0 +1,75 @@
+# BotaniClone option-definitions table.
+# The options_table plugin reads this and generates:
+#   - botaniclone:options/default       (defaults applied at load, only if unset)
+#   - botaniclone:options/toggle/<key>  (one toggle function per option)
+#   - botaniclone:settings              (chat menu)
+#
+# Schema:
+#   key            - scoreboard objective name (under guris.botani)
+#   default        - 0 or 1
+#   short          - clickable command path segment (last leg under .../toggle/)
+#   label          - bold label in chat menu
+#   on_text/off_text  - tail text shown after the label depending on state
+#   hover_underline   - portion of on/off text that's underlined (for hover tooltip)
+#   hover          - hover tooltip body (shown on the underlined portion)
+#   min_pack_format - hide row from the menu when target < this (e.g. 26.1+ blocks)
+
+# === Replication of certain plants ===
+- {key: option_ancient,    default: 0, short: ancient_plants, label: "Ancient plants",
+   on_text: "You can use bone meal on ", off_text: "You cannot use bone meal on ",
+   hover_underline: "ancient plants",
+   hover: "torchflower, pitcher plant, and pitcher crops"}
+
+- {key: option_netherwart, default: 0, short: nether_wart, label: "Nether wart",
+   on_text: "You can use bone meal on nether wart", off_text: "You cannot use bone meal on nether wart"}
+
+- {key: option_witherrose, default: 0, short: wither_rose, label: "Wither rose",
+   on_text: "You can use bone meal on wither rose", off_text: "You cannot use bone meal on wither rose"}
+
+- {key: option_golden_dandelion, default: 0, short: golden_dandelion, label: "Golden dandelion",
+   on_text: "You can use bone meal on ", off_text: "You cannot use bone meal on ",
+   hover_underline: "golden dandelion",
+   hover: "added in 26.1; craft-only and not naturally generating, so default off",
+   min_pack_format: 100}
+
+# === Replication of tree-like plants ===
+- {key: option_tree, default: 1, short: tree, label: "Trees",
+   on_text: "You can use bone meal on ", off_text: "You cannot use bone meal on ",
+   hover_underline: "leaves, propagule",
+   hover: "also potted saplings, bushes, and propagule by option"}
+
+- {key: option_fungus, default: 1, short: fungus, label: "Fungi",
+   on_text: "You can use bone meal on ", off_text: "You cannot use bone meal on ",
+   hover_underline: "nether/warped wart block, shroomlight",
+   hover: "also potted crimson fungus, warped fungus by option"}
+
+- {key: option_mushroom, default: 1, short: mushroom, label: "Mushroom",
+   on_text: "You can use bone meal on ", off_text: "You cannot use bone meal on ",
+   hover_underline: "brown and red mushroom block",
+   hover: "also potted brown mushroom, red mushroom by options"}
+
+# === Misc gates ===
+- {key: option_chorus, default: 1, short: chorus, label: "Chorus flower",
+   on_text: "You can use bone meal on chorus flower to de-age",
+   off_text: "You cannot use bone meal on chorus flower to de-age"}
+
+- {key: option_potted, default: 1, short: potted_plants, label: "Potted plants",
+   on_text: "You can use bone meal on potted plants",
+   off_text: "You cannot use bone meal on potted plants"}
+
+# === Drop modes ===
+- {key: option_modeloot, default: 1, short: mode_loot, label: "Loot mode",
+   on_text: "Items are dropped ", off_text: "Items are dropped to ",
+   hover_underline: "based on the loot table",
+   hover: "1 bone meal evokes the natural block loot table; off = drop the same item as source"}
+
+- {key: option_modetall, default: 1, short: mode_tall, label: "Tall grass mode",
+   on_text: "Bone mealing tall grass and large fern gives ", off_text: "Bone mealing tall grass and large fern does not give ",
+   hover_underline: "tall items",
+   hover: "tall grass and large fern are not obtainable in survival mode"}
+
+- {key: option_modeeye, default: 1, short: mode_eye, label: "Eyeblossom mode",
+   on_text: "Eyeblossom drops match ", off_text: "Eyeblossom drops match ",
+   hover_underline: "the time of day",
+   hover: "on = night drops open, day drops closed; off = drops match the source block (1.21.4+)",
+   min_pack_format: 57}
